@@ -114,3 +114,53 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(data){
+
+  let articleM = document.createElement('div')
+  let articleTitle = document.createElement('h2')
+  let date = document.createElement('p')
+  let parOne = document.createElement('p')
+  let parTwo = document.createElement('p')
+  let parThree = document.createElement('p')
+  let span = document.createElement('span')
+
+  articleM.appendChild(articleTitle)
+  articleM.appendChild(date)
+  articleM.appendChild(parOne)
+  articleM.appendChild(parTwo)
+  articleM.appendChild(parThree)
+  articleM.appendChild(span)
+
+  articleM.classList.add('article')
+  date.classList.add('date')
+  span.classList.add('expandButton')
+
+  articleTitle.textContent = data.title
+  date.textContent = data.date
+  parOne.textContent = data.firstParagraph
+  parTwo.textContent = data.secondParagraph
+  parThree.textContent = data.thirdParagraph
+  span.textContent = '+'
+  span.style.fontSize = '20px'
+
+  span.addEventListener('click',a =>{articleM.classList.toggle('article-open')})
+
+return articleM
+  
+}
+
+data.forEach(a=>{
+  const article = articleMaker(a)
+  const articleContainer = document.querySelector('.articles')
+  articleContainer.appendChild(article);
+})
+
+const newData = {
+
+  title:'finaly finish',
+  date:'12/2/20',
+  firstParagraph:'its was funny i think but im i sure?',
+  secondParagraph:'after a good two second  of deep thinking im sure it was a fun day',
+  thirdParagraph:'but tomorrow will be ass fun? this is another question that i will answer same time tomorrow night'
+}
+document.querySelector('.articles').append(articleMaker(newData))
